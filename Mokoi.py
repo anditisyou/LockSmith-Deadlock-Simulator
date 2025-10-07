@@ -4,6 +4,7 @@ from collections import defaultdict, deque
 import random
 from PIL import Image, ImageTk
 import os
+#------------------------------------------Vaishnavi-GUI------------------------------------------#
 
 class Phase2DeadlockSimulator(tk.Tk):
     """
@@ -822,6 +823,8 @@ class Phase2DeadlockSimulator(tk.Tk):
         self.stop_toggling()
         self.update_npc_display("normal")
 
+#------------------------------------------Priyancy-ALGO------------------------------------------#
+
     # === Algorithm Implementations ===
     def check_safe_state(self):
         """Banker's Algorithm for deadlock avoidance"""
@@ -985,6 +988,8 @@ class Phase2DeadlockSimulator(tk.Tk):
         self.draw_resource_graph()
         self.cli_print("Generated random system state")
         self.message_box.config(text="Generated random state", fg="#9b59b6")
+
+#------------------------------------------Aarti-CLI------------------------------------------#
 
     # === CLI Methods ===
     def cli_print(self, message):

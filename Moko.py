@@ -4,7 +4,7 @@ from collections import defaultdict, deque
 import random
 from PIL import Image, ImageTk
 import os
-
+#------------------------------------------Vaishnavi-GUI------------------------------------------#
 class Phase2DeadlockSimulator(tk.Tk):
     """
     Phase 2 Deadlock Simulator with automatic image toggling based on system states
@@ -129,7 +129,7 @@ class Phase2DeadlockSimulator(tk.Tk):
         self.npc_images[state] = ImageTk.PhotoImage(img)
         print(f"Created placeholder for: {state}")
 
-    def create_toolbox(self):
+    def create_toolbox(self):#_______________________________________________________________________________________P
         self.toolbox = tk.Frame(self, bg="#34495e", width=180)
         self.toolbox.pack(side=tk.LEFT, fill=tk.Y, padx=5, pady=5)
         self.toolbox.pack_propagate(False)
@@ -244,7 +244,7 @@ class Phase2DeadlockSimulator(tk.Tk):
         else:
             print(f"Warning: Cannot update NPC display. State: {state}, Label exists: {self.npc_label is not None}") 
 
-    def create_main_panels(self):
+    def create_main_panels(self):#_______________________________________________________________________________________A
         main_frame = tk.Frame(self, bg="#2c3e50")
         main_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True, padx=5, pady=5)
         
@@ -394,7 +394,7 @@ class Phase2DeadlockSimulator(tk.Tk):
                     return
                 
     # === Process/Resource Management ===
-    def create_process(self, x, y):
+    def create_process(self, x, y):#_______________________________________________________________________________________P
         process_id = f"P{len(self.processes)}"
         self.processes.append(process_id)
         # Initialize with zeros for all existing resources
@@ -411,7 +411,7 @@ class Phase2DeadlockSimulator(tk.Tk):
         self.cli_print(f"Created {process_id} at ({x}, {y})")
         self.message_box.config(text=f"Created {process_id}. Double-click to configure.", fg="#2ecc71")
 
-    def create_resource(self, x, y):
+    def create_resource(self, x, y):#_______________________________________________________________________________________P
         resource_id = f"R{len(self.resources)}"
         self.resources.append(resource_id)
         self.resource_instances.append(1)
@@ -433,7 +433,7 @@ class Phase2DeadlockSimulator(tk.Tk):
         self.cli_print(f"Created {resource_id} at ({x}, {y})")
         self.message_box.config(text=f"Created {resource_id}. Double-click to configure.", fg="#2ecc71")
 
-    def delete_item(self, item_id, item_type):
+    def delete_item(self, item_id, item_type):#_______________________________________________________________________________________A
         if messagebox.askyesno("Confirm Deletion", f"Are you sure you want to delete {item_id}?"):
             if item_type == "process":
                 if item_id in self.processes:
@@ -634,7 +634,7 @@ class Phase2DeadlockSimulator(tk.Tk):
             frame.max_entries = max_entries
             frames[process_id] = frame
 
-        def save_all_config():
+        def save_all_config():#_______________________________________________________________________________________A
             for process_id in self.processes:
                 frame = frames[process_id]
                 self.process_descriptions[process_id] = frame.desc_entry.get()
@@ -725,7 +725,7 @@ class Phase2DeadlockSimulator(tk.Tk):
                     self.canvas.create_line(p_x, p_y, r_x, r_y, arrow=tk.LAST,
                                             fill=fill_color, width=2, tags="graph_arrow")
 
-    def request_resource(self, process_id):
+    def request_resource(self, process_id):#_______________________________________________________________________________________P
         """Process requests a resource"""
         if not self.resources:
             messagebox.showinfo("Info", "No resources available to request.")
@@ -794,7 +794,7 @@ class Phase2DeadlockSimulator(tk.Tk):
 
         tk.Button(popup, text="Request", command=make_request).pack(pady=10)
 
-    def release_resources(self, process_id):
+    def release_resources(self, process_id):#_______________________________________________________________________________________A
         """Process releases all its resources"""
         if not self.resources:
             messagebox.showinfo("Info", "No resources to release.")
@@ -821,6 +821,8 @@ class Phase2DeadlockSimulator(tk.Tk):
         self.message_box.config(text=f"{process_id} released resources", fg="#2ecc71")
         self.stop_toggling()
         self.update_npc_display("normal")
+
+#------------------------------------------Priyancy-ALGO------------------------------------------#
 
     # === Algorithm Implementations ===
     def check_safe_state(self):
@@ -986,6 +988,8 @@ class Phase2DeadlockSimulator(tk.Tk):
         self.cli_print("Generated random system state")
         self.message_box.config(text="Generated random state", fg="#9b59b6")
 
+
+#------------------------------------------Aarti-CLI------------------------------------------#
     # === CLI Methods ===
     def cli_print(self, message):
         self.cli_output.config(state=tk.NORMAL)
